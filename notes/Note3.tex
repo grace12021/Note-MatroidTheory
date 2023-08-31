@@ -1,0 +1,45 @@
+
+
+\definition[Graph Terminologies]{\noindent
+\begin{itemize}
+    \item A \textit{path} from $u$ to $v$ is a sequence of edges coming from $u$ to $v$ allowing repetition of vertices but not repetition of edges.
+    \item A \textit{cycle} is a path from $u$ to $u$.
+    \item A \textit{forest} is a graph with no cycles.
+    \item A \textit{tree} is a connected forest.
+    \item A graph is called \textit{connected} if there is a path between any two vertices $v, w$.
+    \item We call two vertices $u, v$ are in the same connected component if there is a path between them.
+\end{itemize}
+}
+
+\lemma{A forest $(V, E)$ has $|V|-|E|$ connected components.}
+\begin{proof}
+    Induction on $|E|$. Suppose that $|E| = 0$. Then each vertice is a connected components hence there are $|V|$ connected components. Let $G = (V, E)$ be a forest with $k$ edges. Let's remove an edge $e$. Then $(V, E-e)$ has $|V|-|E-e| = |V|-|E|+1$ connected components by the induction hypothesis. Let $e = uv$ then $u, v$ are in distinct components. Otherwise, there are a path from $u$ to $v$ other than $e$ and it implies there is a cycle. It contradicts to that $G$ is a forest. Hence adding $e$ back in $E$ merges two distinct connected components into one; hence there are $|V|-|E|$ connected components.
+\end{proof}
+\noindent
+
+We can use induction on the case that the math object we are treating has the \textit{size} in $\N$. We have the induction hypothesis for all with size $k-1$ (or all with size $\leq k-1$) and show that the same hypothesis for all with size $k$.
+
+\proposition{
+Let $G= (V, E)$ be a graph, and let  $\mathcal{I}$ be a collection of set of edges with no cycles. Then $(E, \mathcal{I})$ is a matroid. It is called the \textit{graphical matroid} of $G$.}
+\begin{proof}
+    For the first axiom (I1), $\emptyset$ contains no cycles hence $\emptyset \in \mathcal{I}$. For the second axiom (I2), suppose not. Then there exists some $I \subset J$ such that $J$ is independent but $I$ is not. It induces a contradiction because $J$ contains a cycle if $I$ contains a cycle.
+
+    Lastly, we will show (I3). Assume $I, J$ are independent and $|I|<|J|$. Assume that $I \cup j$ is never independent for all $j \in J$. It implies that adding $j$ to $I$ doesn't change the number of connected components; hence $I \cup J$ has $|V|-|E|$ connected components. It induces a contradiction because $I \cup J$ contains $J$ but $I \cup J$ has $|V|-|I|$ connected components which is larger than $|V|-|J|$ connected components of $J$. Note that adding edges reduces or maintains the number of connected components.
+\end{proof}
+
+We can consider $\mathcal{I}$ as a set of \textit{subforests}.
+
+In the previous examples of the linear and graphical matroids, 
+
+\definition{
+Two matroids $M_1 = (E_1, \mathcal{I}_1)$ and $M_2 = (E_2, \mathcal{I}_2)$ are isomorphic if there is a bijection $\varphi: E_1 \rightarrow E_2$ so that $I_1 \in \mathcal{I}_1$ iff $\varphi(I_2) \in \mathcal{I}_2$.
+}
+\definition{
+A \textit{basis} is a maximal independent set. In other words, $B$ is called a \textit{basis} if there exists no independent $I$ having $B$ as its proper subset.
+}
+
+\definition{
+A \textit{circuit} is a minimal independent set. A \textit{loop} is a circuit of size $1$. A \textit{coloop} is an element that is in every basis.
+}
+
+\example{}

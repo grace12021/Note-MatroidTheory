@@ -1,0 +1,37 @@
+
+
+\definition{A \textit{matroid} $(E, I)$ consists of 
+\begin{itemize}
+    \item a finite set $E$ which is called \textit{ground set}
+    \item a collection $\mathcal{I}\subset 2^E$ of \textit{independent} subsets of $E$ such that
+    \begin{itemize}
+        \item[(I1)] $\emptyset \in \mathcal{I}$;
+        \item[(I2)] If $I \subset J$ and $J \in \mathcal{I}$ then $I \in \mathcal{I}$;
+        \item[(I3)] If $I, J \in \mathcal{I}$ and $|I| < |J|$ then there exists $j \in J \setminus I$ such that $I \cup \{j\} \in \mathcal{I}$. 
+    \end{itemize}
+\end{itemize}}
+\example{
+When $E = \{a,b,c,d,e,f\}$, $\mathcal{I}$ is a matroid when
+\begin{align*}
+    \mathcal{I} = \{\emptyset, a,b,c,d,e, ab, \\
+    ac,ad,ae, bc,bd,be,cd, ce,\\
+    abc,abd,abe,acd,ace\}.
+\end{align*}
+}
+
+Historically, the common features of independence is observed in many different fields and 
+
+\example{Linear matroids.}
+\example{Graphical matroids.}
+\example{Transversal matroids.}
+\example{Algebraic matroids.}
+
+
+\proposition{Linear matroids are indeed matroids.}
+\begin{proof}
+    Let $V$ be a vector space and take a finite set $E \subset V$. Define $\mathcal{I}$ as a collection of linearly independent subsets of $E$. The first axiom is satisfied. The second axiom is satisfied because any subset of an independent set is independent. For the last one, suppose $I, J$ are linearlt independent subsets of $E$ and $|I|<|J|$.
+
+    Let $I = \{v_1, \cdots, v_a\}, J = \{w_1, \cdots, w_b\}$ where $a<b$. By contradiction, assume that $I \cap w_k$ is dependent for all $k = 1, \cdots, b$. Then all $w_k$ can be written as linear combinations of $v_1, \cdots v_a$ because $I$ is independent. Therefore all $w_k$ are in $\mathrm{span}(I)$ and $\mathrm{span}(J)$ is contained in $\mathrm{span}(I)$. It implies that $\dim \mathrm{span}(I) > \dim \mathrm{span}(J)$ which contradicts to that $a<b$.
+\end{proof}
+
+\lemma{If a set $J$ of edges have no cycles, then $G|_J$ has $n-|J|$ connected components.}

@@ -1,0 +1,22 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\input{assets}
+
+\title{Matroid Theory Note}
+\author{Nayeong Kim}
+\date{Fall 2023}
+
+\begin{document}
+\maketitle
+\section*{Introduction}
+This note is about the Matroid Theory course at San Francisco State in Fall 2023.
+
+\newcounter{x}
+\forloop{x}{1}{\value{x}<4}{
+    \clearpage
+    \section*{Lecture \arabic{x}}
+    \input{notes/Note\arabic{x}}
+}
+
+\end{document}
